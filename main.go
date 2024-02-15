@@ -3,6 +3,7 @@ package main
 import (
 	"embed"
 
+	DB "github.com/Xonline-Tech/XType/backend"
 	XType "github.com/Xonline-Tech/XType/middleware"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -13,6 +14,11 @@ import (
 var assets embed.FS
 
 func main() {
+
+	//OpenDatabase
+	DB.InitDB()
+	defer DB.CloseDB()
+
 	// Create an instance of the app structure
 	app := NewApp()
 
